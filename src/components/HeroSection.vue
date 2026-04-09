@@ -31,6 +31,7 @@
 </template>
 
 <script setup>
+const baseUrl = import.meta.env.BASE_URL
 </script>
 
 <style scoped>
