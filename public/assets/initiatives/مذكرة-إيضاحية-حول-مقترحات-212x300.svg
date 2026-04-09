@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="212" height="300" viewBox="0 0 212 300">
+  <rect width="100%" height="100%" fill="#f3f7ff" rx="12"/>
+  <g fill="#0f386f" font-family="Tajawal, Arial, sans-serif">
+    <text x="50%" y="45%" font-size="16" text-anchor="middle">مذكرة إيضاحية</text>
+    <text x="50%" y="55%" font-size="14" text-anchor="middle">حول مقترحات</text>
+  </g>
+  <rect x="16" y="220" width="180" height="44" rx="22" fill="#efbb20"/>
+  <text x="50%" y="250" font-size="13" text-anchor="middle" fill="#08203b" font-weight="700">تحميل الوثيقة</text>
+</svg>
