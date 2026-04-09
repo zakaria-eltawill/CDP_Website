@@ -19,7 +19,7 @@
           :style="{ '--i': index }"
         >
           <div class="relative h-56 overflow-hidden">
-            <img :src="item.image" :alt="item.title" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onerror="this.src='/logo.png'" />
+            <img :src="item.image" :alt="item.title" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" @error="$event.target.src=`${baseUrl}logo.png`" />
             <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-4 py-1.5 rounded-full text-xs font-bold text-[#003a6a] shadow-sm">
               أخبار
             </div>
@@ -59,6 +59,7 @@ import { useReveal } from '../composables/useReveal'
 import { newsItems } from '../data/newsData'
 import { computed } from 'vue'
 
+const baseUrl = import.meta.env.BASE_URL
 useReveal()
 
 const homeNews = computed(() => {
