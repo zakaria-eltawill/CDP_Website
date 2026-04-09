@@ -1,6 +1,6 @@
 import ContactView from '../views/ContactView.vue'
 import JoinView from '../views/JoinView.vue'
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import GeographicalSpreadView from '../views/GeographicalSpreadView.vue'
 import HomeView from '../views/HomeView.vue'
 import NewsView from '../views/NewsView.vue'
@@ -15,7 +15,7 @@ import StatementDetailView from "@/views/StatementDetailView.vue";
 import InitiativesView from '@/views/InitiativesView.vue'
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes: [
     {
       path: '/',
