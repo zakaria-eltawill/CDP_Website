@@ -2,7 +2,7 @@
   <section class="relative overflow-hidden min-h-[500px] md:min-h-[600px] flex items-center bg-gray-900">
     
     <!-- Background Image (Group Photo) -->
-    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-1000 hero-zoom" style="background-image: url('/hero-bg.jpeg');"></div>
+    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-1000 hero-zoom" :style="{ backgroundImage: `url(${baseUrl}hero-bg.jpeg)` }"></div>
 
     <!-- Dark Overlay for Contrast -->
     <div class="absolute inset-0 bg-black/40"></div>

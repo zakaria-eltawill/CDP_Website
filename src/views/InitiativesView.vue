@@ -1,7 +1,7 @@
 <template>
   <section class="initiatives-page">
     <div class="hero relative py-24 md:py-32 overflow-hidden">
-      <div class="hero-pattern"></div>
+      <div class="hero-pattern" :style="{ backgroundImage: `url(${baseUrl}pattern-bg.png)`, backgroundRepeat: 'repeat' }"></div>
       <div class="hero-glow"></div>
       <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h1 class="text-4xl md:text-5xl font-extrabold mb-4 text-white drop-shadow">مبادرات الحزب المدني الديمقراطي</h1>
@@ -18,12 +18,12 @@
           
           <div class="w-full h-56 bg-gradient-to-br from-[#003a6a]/5 to-[#1c41d8]/10 flex items-center justify-center relative overflow-hidden">
              <!-- Default Placeholder (shows beneath image) -->
-             <img src="/logo.png" class="w-24 h-auto opacity-30 grayscale mix-blend-multiply transition-transform duration-500 group-hover:scale-110" alt="CDP Placeholder">
+             <img :src="`${baseUrl}logo.png`" class="w-24 h-auto opacity-30 grayscale mix-blend-multiply transition-transform duration-500 group-hover:scale-110" alt="CDP Placeholder">
              
              <!-- Actual Image -->
              <img
                v-if="item.img"
-               :src="item.img"
+               :src="item.img.startsWith('/') ? `${baseUrl}${item.img.slice(1)}` : item.img"
                :alt="item.title"
                class="w-full h-full object-cover absolute inset-0 z-10 transition-transform duration-500 group-hover:scale-105"
                @error="$event.target.style.display='none'"
@@ -34,8 +34,8 @@
             <h3 class="text-xl font-bold text-[#0f386f] leading-snug">{{ item.title }}</h3>
             <p v-if="item.date" class="text-gray-500 text-sm mt-1 mb-2">➖ {{ item.date }}</p>
             <div class="mt-auto pt-4 flex gap-3 justify-start">
-              <a :href="`/assets/initiatives/${item.pdf}`" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full bg-[#ffd200] text-[#003a6a] font-bold px-5 py-2.5 transition hover:bg-[#e6bb00] text-sm">تحميل الوثيقة</a>
-              <a v-if="item.pdfPreview" :href="`/assets/initiatives/${item.pdfPreview}`" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full border-2 border-[#ffd200] text-[#003a6a] font-bold px-5 py-2.5 transition hover:bg-[#ffd200] text-sm">عرض</a>
+              <a :href="`${baseUrl}assets/initiatives/${item.pdf}`" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full bg-[#ffd200] text-[#003a6a] font-bold px-5 py-2.5 transition hover:bg-[#e6bb00] text-sm">تحميل الوثيقة</a>
+              <a v-if="item.pdfPreview" :href="`${baseUrl}assets/initiatives/${item.pdfPreview}`" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full border-2 border-[#ffd200] text-[#003a6a] font-bold px-5 py-2.5 transition hover:bg-[#ffd200] text-sm">عرض</a>
             </div>
            </div>
         </div>
@@ -46,11 +46,12 @@
 
 <script setup>
 import initiatives from '@/data/initiativesData'
+const baseUrl = import.meta.env.BASE_URL
 </script>
 
 <style scoped>
 .initiatives-page { direction: rtl; font-family: "Tajawal", sans-serif; color: #10294b; }
 .hero { position: relative; min-height: 520px; display: flex; align-items: center; justify-content: center; padding: 4rem 1rem; text-align: center; overflow: hidden; background: linear-gradient(135deg, #003a6a 0%, #0f3c5f 50%, #1c41d8 100%); }
-.hero-pattern { position: absolute; inset: 0; background-image: url('/pattern-bg.png'); background-repeat: repeat; opacity: 0.07; }
+.hero-pattern { position: absolute; inset: 0; opacity: 0.07; }
 .hero-glow { position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.08), transparent 60%); }
 </style>

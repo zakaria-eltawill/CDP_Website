@@ -1,7 +1,7 @@
 <template>
   <section class="vision-libya-page">
     <div class="hero-panel relative py-24 md:py-32 overflow-hidden" style="background: linear-gradient(135deg, #003a6a 0%, #0f3c5f 50%, #1c41d8 100%);">
-      <div class="hero-pattern"></div>
+      <div class="hero-pattern" :style="{ backgroundImage: `url(${baseUrl}pattern-bg.png)`, backgroundRepeat: 'repeat' }"></div>
       <div class="hero-glow"></div>
       <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h1 class="text-4xl md:text-5xl font-extrabold mb-4 text-white drop-shadow">خارطة طريق وطنية لبناء دولة مدنية ديمقراطية</h1>
@@ -12,7 +12,7 @@
         <div class="flex flex-wrap gap-4 justify-center">
           <a
             class="primary-button"
-            href="/publications/vision.pdf"
+            :href="`${baseUrl}publications/vision.pdf`"
             target="_blank"
             rel="noreferrer"
           >
@@ -89,6 +89,7 @@
 </template>
 
 <script setup>
+const baseUrl = import.meta.env.BASE_URL
 const videos = [
   'pwBqKpEI5XA','jmzdCGWkM90','4nAgfhgK3LQ','urLXwkbHm5k',
   'CtD35KqU2vc','T8Xqu68N65I','iXPRUNfCfzk','s4uhkJSIpH8',
@@ -118,8 +119,6 @@ const videos = [
 .hero-pattern {
   position: absolute;
   inset: 0;
-  background-image: url('/pattern-bg.png');
-  background-repeat: repeat;
   opacity: 0.07;
 }
 

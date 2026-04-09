@@ -36,7 +36,7 @@
           <div class="absolute inset-0 bg-[#ffd200]/10 rounded-full blur-3xl scale-150 -z-10 mix-blend-multiply"></div>
           <div class="absolute inset-0 bg-[#003a6a]/10 rounded-full blur-3xl scale-125 -z-10 translate-y-10 mix-blend-multiply"></div>
           
-          <img src="/logo.png" alt="الحزب المدني الديمقراطي" class="w-64 md:w-80 h-auto drop-shadow-2xl hover:scale-105 transition-transform duration-700 ease-out" />
+          <img :src="`${baseUrl}logo.png`" alt="الحزب المدني الديمقراطي" class="w-64 md:w-80 h-auto drop-shadow-2xl hover:scale-105 transition-transform duration-700 ease-out" />
         </div>
       </div>
 
@@ -92,6 +92,7 @@
 
 <script setup>
 import { useReveal } from '../composables/useReveal'
+const baseUrl = import.meta.env.BASE_URL
 useReveal()
 </script>
 

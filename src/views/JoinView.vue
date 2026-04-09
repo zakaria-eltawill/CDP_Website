@@ -6,7 +6,7 @@
     <!-- Abstract shapes -->
     <div class="absolute top-[-10%] right-[-5%] w-96 h-96 bg-[#ffd200] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse-slow"></div>
     <div class="absolute bottom-[-10%] left-[-5%] w-96 h-96 bg-[#ffffff] rounded-full mix-blend-overlay filter blur-3xl opacity-10 animate-pulse-slow-delayed"></div>
-    <div class="absolute inset-0 opacity-[0.06]" style="background-image: url('/pattern-bg.png'); background-repeat: repeat;"></div>
+    <div class="absolute inset-0 opacity-[0.06]" :style="{ backgroundImage: `url(${baseUrl}pattern-bg.png)`, backgroundRepeat: 'repeat' }"></div>
 
     <!-- Main Content Card -->
     <div class="relative z-10 w-full max-w-2xl px-4 sm:px-6">
@@ -57,6 +57,7 @@
 </template>
 
 <script setup>
+const baseUrl = import.meta.env.BASE_URL
 </script>
 
 <style scoped>

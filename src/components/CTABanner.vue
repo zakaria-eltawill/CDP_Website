@@ -1,7 +1,7 @@
 <template>
   <section class="relative py-24 md:py-32 overflow-hidden" style="background: linear-gradient(135deg, #003a6a 0%, #0f3c5f 50%, #1c41d8 100%);">
     <!-- Pattern -->
-    <div class="absolute inset-0 opacity-[0.07]" style="background-image: url('/pattern-bg.png'); background-repeat: repeat;"></div>
+    <div class="absolute inset-0 opacity-[0.07]" :style="{ backgroundImage: `url(${baseUrl}pattern-bg.png)`, backgroundRepeat: 'repeat' }"></div>
     <!-- Glow -->
     <div class="absolute inset-0" style="background: radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.08), transparent 60%);"></div>
 
@@ -16,6 +16,7 @@
 
 <script setup>
 import { useReveal } from '../composables/useReveal'
+const baseUrl = import.meta.env.BASE_URL
 useReveal()
 </script>
 

@@ -7,6 +7,7 @@ import { useReveal } from '../composables/useReveal'
 
 const route = useRoute()
 const router = useRouter()
+const baseUrl = import.meta.env.BASE_URL
 useReveal()
 
 const article = computed(() => {
@@ -67,10 +68,10 @@ const relatedArticles = computed(() => {
       <!-- Featured Image -->
       <div class="relative rounded-3xl overflow-hidden shadow-2xl mb-12 reveal-scale">
         <img
-          :src="article.image"
+          :src="article.image.startsWith('/') ? `${baseUrl}${article.image.slice(1)}` : article.image"
           :alt="article.title"
           class="w-full h-auto object-cover max-h-[600px]"
-          onerror="this.src='/logo.png'"
+          @error="$event.target.src=`${baseUrl}logo.png`"
         />
       </div>
 
@@ -122,7 +123,7 @@ const relatedArticles = computed(() => {
               >
                 <div class="flex gap-4">
                   <div class="w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden">
-                    <img :src="related.image" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='/logo.png'" />
+                    <img :src="related.image.startsWith('/') ? `${baseUrl}${related.image.slice(1)}` : related.image" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" @error="$event.target.src=`${baseUrl}logo.png`" />
                   </div>
                   <div>
                     <h4 class="text-sm font-bold text-gray-900 group-hover:text-[#1c41d8] transition-colors leading-snug line-clamp-2">

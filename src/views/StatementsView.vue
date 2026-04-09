@@ -1,7 +1,7 @@
 <template>
   <section class="statements-page" dir="rtl">
     <div class="hero-banner relative py-24 md:py-32 overflow-hidden">
-      <div class="hero-pattern"></div>
+      <div class="hero-pattern" :style="{ backgroundImage: `url(${baseUrl}pattern-bg.png)`, backgroundRepeat: 'repeat' }"></div>
       <div class="hero-glow"></div>
       <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h1 class="text-4xl md:text-5xl font-extrabold mb-4 text-white drop-shadow">بيانات</h1>
@@ -53,7 +53,8 @@ export default {
     return {
       posts,
       page: 1,
-      pageSize: PAGE_SIZE
+      pageSize: PAGE_SIZE,
+      baseUrl: import.meta.env.BASE_URL
     }
   },
   computed: {
@@ -71,7 +72,7 @@ export default {
 <style scoped>
 .statements-page { direction: rtl; background: #f8fbff; font-family: "Tajawal", sans-serif; color: #10294b; }
 .hero-banner { position: relative; overflow: hidden; background: linear-gradient(135deg, #003a6a 0%, #0f3c5f 50%, #1c41d8 100%); }
-.hero-pattern { position: absolute; inset: 0; background-image: url('/pattern-bg.png'); background-repeat: repeat; opacity: 0.07; }
+.hero-pattern { position: absolute; inset: 0; opacity: 0.07; }
 .hero-glow { position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.08), transparent 60%); }
 .hero-banner h1 { font-weight: 800; }
 .hero-banner p { color: rgba(255, 255, 255, 0.88); }

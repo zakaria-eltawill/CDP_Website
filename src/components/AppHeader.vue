@@ -6,7 +6,7 @@
         <!-- Logo -->
         <div class="flex-shrink-0 flex items-center">
           <router-link to="/">
-            <img :class="['w-auto transition-all duration-300', scrolled ? 'h-12 lg:h-14' : 'h-14 sm:h-16 lg:h-20']" src="/logo.png" alt="الحزب المدني الديمقراطي" />
+            <img :class="['w-auto transition-all duration-300', scrolled ? 'h-12 lg:h-14' : 'h-14 sm:h-16 lg:h-20']" :src="`${baseUrl}logo.png`" alt="الحزب المدني الديمقراطي" />
           </router-link>
         </div>
 
@@ -81,6 +81,8 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import { ChevronDown, Menu, X } from 'lucide-vue-next'
+
+const baseUrl = import.meta.env.BASE_URL
 
 const mobileOpen = ref(false)
 const scrolled = ref(false)

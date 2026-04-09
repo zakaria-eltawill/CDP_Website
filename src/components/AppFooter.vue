@@ -9,7 +9,7 @@
         
         <!-- Right Column (Logo & Info) -->
         <div class="md:col-span-4 flex flex-col items-end">
-          <img src="/logo.png" alt="الحزب المدني الديمقراطي" class="h-24 w-auto mb-6 opacity-80 hover:opacity-100 transition-opacity" />
+          <img :src="`${baseUrl}logo.png`" alt="الحزب المدني الديمقراطي" class="h-24 w-auto mb-6 opacity-80 hover:opacity-100 transition-opacity" />
           <p class="text-sm leading-relaxed text-gray-500 font-medium">
             الحزب المدني الديمقراطي — ليبيا الواعدة، دولة الأمن والنماء. إطار وطني يجمع المؤمنين بالدولة المدنية الديمقراطية.
           </p>
@@ -68,6 +68,8 @@
 
 <script setup>
 import { Twitter, Facebook, Instagram, Youtube, Mail } from 'lucide-vue-next'
+
+const baseUrl = import.meta.env.BASE_URL
 </script>
 
 <style scoped>

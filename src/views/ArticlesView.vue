@@ -4,13 +4,14 @@ import { Calendar, User, ArrowRight } from 'lucide-vue-next'
 import { articlesData } from '../data/articlesData'
 
 useReveal()
+const baseUrl = import.meta.env.BASE_URL
 </script>
 
 <template>
   <div class="pt-20">
     <!-- Articles Hero -->
     <section class="hero-banner relative py-16 md:py-24 text-white overflow-hidden">
-      <div class="hero-pattern"></div>
+      <div class="hero-pattern" :style="{ backgroundImage: `url(${baseUrl}pattern-bg.png)`, backgroundRepeat: 'repeat' }"></div>
       <div class="hero-glow"></div>
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         <h1 class="text-4xl md:text-5xl font-extrabold mb-6 reveal">مقالات و آراء</h1>
@@ -38,7 +39,7 @@ useReveal()
                 :src="article.image"
                 :alt="article.title"
                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                onerror="this.src='/logo.png'"
+                @error="$event.target.src=`${baseUrl}logo.png`"
               />
               <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
               <div class="absolute bottom-4 right-4 bg-[#1c41d8] text-white px-3 py-1 rounded-full text-xs font-bold">
@@ -85,8 +86,6 @@ useReveal()
 .hero-pattern {
   position: absolute;
   inset: 0;
-  background-image: url('/pattern-bg.png'); /* Replace with actual pattern path */
-  background-repeat: repeat;
   opacity: 0.07;
   z-index: 1;
 }

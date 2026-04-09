@@ -8,13 +8,14 @@ useReveal()
 // We filter out the 3 items that are primarily for the home section if we want, 
 // but usually a news page shows everything.
 const displayItems = newsItems;
+const baseUrl = import.meta.env.BASE_URL
 </script>
 
 <template>
   <div class="pt-20">
     <!-- News Hero -->
     <section class="hero-banner relative py-16 md:py-24 text-white overflow-hidden">
-      <div class="hero-pattern"></div>
+      <div class="hero-pattern" :style="{ backgroundImage: `url(${baseUrl}pattern-bg.png)`, backgroundRepeat: 'repeat' }"></div>
       <div class="hero-glow"></div>
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         <h1 class="text-4xl md:text-5xl font-extrabold mb-6 reveal">أخبار و فعاليات</h1>
@@ -39,10 +40,10 @@ const displayItems = newsItems;
             <!-- Image Container -->
             <div class="relative h-64 overflow-hidden">
               <img 
-                :src="item.image" 
+                :src="item.image.startsWith('/') ? `${baseUrl}${item.image.slice(1)}` : item.image" 
                 :alt="item.title"
                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                onerror="this.src='/logo.png'"
+                @error="$event.target.src=`${baseUrl}logo.png`"
               />
               <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
               <div class="absolute bottom-4 right-4 bg-[#1c41d8] text-white px-3 py-1 rounded-full text-xs font-bold">
@@ -85,6 +86,6 @@ const displayItems = newsItems;
 
 <style scoped>
 .hero-banner { position: relative; overflow: hidden; background: linear-gradient(135deg, #003a6a 0%, #0f3c5f 50%, #1c41d8 100%); }
-.hero-pattern { position: absolute; inset: 0; background-image: url('/pattern-bg.png'); background-repeat: repeat; opacity: 0.07; }
+.hero-pattern { position: absolute; inset: 0; opacity: 0.07; }
 .hero-glow { position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.08), transparent 60%); }
 </style>
